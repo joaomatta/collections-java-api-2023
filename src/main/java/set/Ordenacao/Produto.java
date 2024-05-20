@@ -38,17 +38,19 @@ public class Produto implements Comparable<Produto> {
     return quantidade;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Produto produto)) return false;
-    return getCodigo() == produto.getCodigo();
-  }
+  // @Override
+  // public boolean equals(Object o) {
+  //   if (this == o) return true;
+  //   if (!(o instanceof Produto produto)) return false;
+  //   return getCodigo() == produto.getCodigo();
+  // }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(getCodigo());
-  }
+  // @Override
+  // public int hashCode() {
+  //   return Objects.hash(getCodigo());
+  // }
+
+  
 
   @Override
   public String toString() {
@@ -58,6 +60,28 @@ public class Produto implements Comparable<Produto> {
         ", preco=" + preco +
         ", quantidade=" + quantidade +
         '}';
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + (int) (codigo ^ (codigo >>> 32));
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Produto other = (Produto) obj;
+    if (codigo != other.codigo)
+      return false;
+    return true;
   }
 }
 

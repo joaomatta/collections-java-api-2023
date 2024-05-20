@@ -27,21 +27,47 @@ public class Aluno implements Comparable<Aluno>{
     return media;
   }
 
+  // @Override
+  // public boolean equals(Object o) {
+  //   if (this == o) return true;
+  //   if (!(o instanceof Aluno aluno)) return false;
+  //   return Objects.equals(getMatricula(), aluno.getMatricula());
+  // }
+
+  // @Override
+  // public int hashCode() {
+  //   return Objects.hash(getMatricula());
+  // }
+  
+  
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Aluno aluno)) return false;
-    return Objects.equals(getMatricula(), aluno.getMatricula());
+  public int compareTo(Aluno aluno) {
+    return nome.compareTo(aluno.getNome());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getMatricula());
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+    return result;
   }
 
   @Override
-  public int compareTo(Aluno aluno) {
-    return nome.compareTo(aluno.getNome());
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Aluno other = (Aluno) obj;
+    if (matricula == null) {
+      if (other.matricula != null)
+        return false;
+    } else if (!matricula.equals(other.matricula))
+      return false;
+    return true;
   }
 
   @Override

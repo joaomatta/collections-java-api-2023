@@ -20,16 +20,42 @@ public class Convidado {
     return codigoConvite;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Convidado convidado)) return false;
-    return getCodigoConvite() == convidado.getCodigoConvite();
-  }
+  
+  // @Override
+  // public boolean equals(Object o) {
+  //   if (this == o) return true;
+  //   if (!(o instanceof Convidado convidado)) return false;
+  //   return getCodigoConvite() == convidado.getCodigoConvite();
+  // }
 
+  // @Override
+  // public int hashCode() {
+  //   return Objects.hash(getCodigoConvite());
+  // }
+
+
+  //Verifica se o codigoConvite é igual 
   @Override
   public int hashCode() {
-    return Objects.hash(getCodigoConvite());
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + codigoConvite;
+    return result;
+  }
+
+  //Verifica se o codigoConvite é igual, caso igual não adiciona no set
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Convidado other = (Convidado) obj;
+    if (codigoConvite != other.codigoConvite)
+      return false;
+    return true;
   }
 
   @Override
